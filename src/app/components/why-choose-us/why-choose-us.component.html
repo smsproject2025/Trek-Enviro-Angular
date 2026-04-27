@@ -1,0 +1,35 @@
+<section id="why-us" data-testid="section-why-us" class="py-24 md:py-32 bg-[#0A3B2C] text-[#F9F6F0] relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+      <div appReveal class="lg:col-span-5">
+        <span class="eyebrow" style="color:#10B981">Why Trek Enviro</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold tracking-tight mt-5 leading-[1.05]">
+          Five reasons leading projects choose us.
+        </h2>
+      </div>
+      <div appReveal class="lg:col-span-7 lg:pt-3">
+        <p class="text-[#F9F6F0]/75 text-lg leading-relaxed">
+          From individual homes to large industrial clusters, our solutions deliver verifiable performance — backed by Japanese engineering, Indian manufacturing, and a service network that doesn't disappear after installation.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 border-t border-[#F9F6F0]/15">
+      <div
+        *ngFor="let p of pillars; let i = index"
+        appReveal
+        [class]="'p-7 md:p-8 border-b border-[#F9F6F0]/15 ' + (i !== pillars.length - 1 ? 'lg:border-r' : '') + ' border-[#F9F6F0]/15'"
+        [style.animation-delay]="(i * 0.08) + 's'"
+        [attr.data-testid]="'pillar-' + i"
+      >
+        <span class="w-11 h-11 grid place-items-center bg-[#10B981]/15 text-[#10B981]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path [attr.d]="getIconPath(p.icon)"/>
+          </svg>
+        </span>
+        <h3 class="font-display text-xl font-semibold mt-7 leading-snug">{{ p.title }}</h3>
+        <p class="mt-3 text-[#F9F6F0]/70 text-[0.93rem] leading-relaxed">{{ p.body }}</p>
+      </div>
+    </div>
+  </div>
+</section>

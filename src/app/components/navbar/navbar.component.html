@@ -1,0 +1,75 @@
+<header
+  data-testid="site-navbar"
+  [class]="'fixed top-0 left-0 right-0 z-50 transition-all duration-500 ' + (scrolled ? 'nav-glass py-3' : 'py-5 bg-transparent')"
+>
+  <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#home" data-testid="logo-link" class="flex items-center gap-2 group">
+      <span class="w-9 h-9 rounded-full bg-[#0A3B2C] text-[#F9F6F0] grid place-items-center transition-transform duration-500 group-hover:rotate-[18deg]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+      </span>
+      <span class="font-display text-[1.15rem] font-bold tracking-tight text-[#0A3B2C]">Trek Enviro</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-9">
+      <a
+        *ngFor="let link of navLinks"
+        [href]="link.href"
+        [attr.data-testid]="'nav-' + link.label.toLowerCase().replace(' ', '-')"
+        class="nav-link link-underline"
+      >{{ link.label }}</a>
+    </nav>
+
+    <!-- Desktop CTA -->
+    <a
+      [href]="mailtoUrl"
+      data-testid="navbar-cta-quote"
+      class="hidden lg:inline-flex btn-primary text-sm py-3 px-5"
+    >
+      Get a Quote
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    </a>
+
+    <!-- Mobile toggle -->
+    <button
+      data-testid="mobile-menu-toggle"
+      class="lg:hidden text-[#0A3B2C]"
+      (click)="toggleMenu()"
+      aria-label="Toggle menu"
+    >
+      <ng-container *ngIf="open; else menuIcon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </ng-container>
+      <ng-template #menuIcon>
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </ng-template>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    *ngIf="open"
+    data-testid="mobile-menu"
+    class="lg:hidden nav-glass border-t border-[#0A3B2C]/10 mt-3"
+  >
+    <div class="px-6 py-6 flex flex-col gap-5">
+      <a
+        *ngFor="let link of navLinks"
+        [href]="link.href"
+        [attr.data-testid]="'mobile-nav-' + link.label.toLowerCase()"
+        (click)="closeMenu()"
+        class="nav-link text-base"
+      >{{ link.label }}</a>
+      <a
+        [href]="mailtoUrl"
+        data-testid="mobile-cta-quote"
+        (click)="closeMenu()"
+        class="btn-primary justify-center mt-2"
+      >
+        Get a Quote
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+    </div>
+  </div>
+</header>

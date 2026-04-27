@@ -1,0 +1,10 @@
+<div data-testid="marquee-strip" class="bg-[#0A3B2C] text-[#F9F6F0] py-5 overflow-hidden border-y border-[#134E4A]/40">
+  <div class="flex gap-12 marquee-track whitespace-nowrap">
+    <span
+      *ngFor="let t of repeated; let i = index"
+      class="font-display text-base md:text-lg uppercase tracking-[0.18em] flex items-center gap-12 text-[#F9F6F0]/85"
+    >
+      {{ t }}<span class="text-[#10B981]">✦</span>
+    </span>
+  </div>
+</div>

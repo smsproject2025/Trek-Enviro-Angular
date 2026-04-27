@@ -1,0 +1,53 @@
+<section id="technology" data-testid="section-technology" class="py-24 md:py-32 bg-[#F9F6F0]">
+  <div class="max-w-7xl mx-auto px-6 md:px-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div appReveal class="lg:col-span-6">
+        <div class="overflow-hidden bg-[#0A3B2C]">
+          <img [src]="mbbrBlueprint" alt="MBBR packaged STP technology blueprint" class="w-full h-[460px] object-cover opacity-95" />
+        </div>
+      </div>
+      <div class="lg:col-span-6">
+        <span appReveal class="eyebrow">Technology</span>
+        <h2 appReveal class="section-h2 mt-5">Advanced MBBR — Anaerobic + Aerobic, in one packaged unit.</h2>
+        <p appReveal class="text-[#1B2623]/75 mt-7 text-lg leading-relaxed" style="animation-delay:0.1s">
+          Based on Japan's leading decentralized packaged wastewater treatment system, manufactured and adapted for Indian conditions. Treats both black water and gray water in a single compact FRP unit with multi-stage anaerobic + aerobic processes for superior pollutant removal.
+        </p>
+        <div appReveal class="mt-9 grid grid-cols-2 gap-x-7 gap-y-3" style="animation-delay:0.2s">
+          <div
+            *ngFor="let f of features"
+            class="flex items-start gap-3"
+            [attr.data-testid]="'tech-feature-' + f.replace(' ', '-')"
+          >
+            <span class="mt-1 w-5 h-5 rounded-full bg-[#0A3B2C] grid place-items-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F9F6F0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="text-[0.95rem] text-[#1B2623]/85">{{ f }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capacity tiers -->
+    <div class="mt-20">
+      <div appReveal class="flex items-end justify-between gap-6 mb-9">
+        <h3 class="font-display text-2xl md:text-3xl font-semibold text-[#0A3B2C] tracking-tight">Capacity tiers — for every project size.</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+        <div
+          *ngFor="let t of tiers; let i = index"
+          appReveal
+          class="tier-card"
+          [style.animation-delay]="(i * 0.1) + 's'"
+          [attr.data-testid]="'tier-card-' + i"
+        >
+          <div class="flex items-baseline justify-between">
+            <span class="font-display text-4xl font-bold tracking-tight">{{ t.range }}</span>
+            <span class="text-[#10B981] text-xs uppercase tracking-[0.22em] font-bold">Tier {{ i + 1 }}</span>
+          </div>
+          <div class="mt-2 text-[#10B981] text-sm uppercase tracking-[0.2em] font-semibold">{{ t.label }}</div>
+          <p class="mt-5 text-[#F9F6F0]/75 text-[0.95rem] leading-relaxed">{{ t.body }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
